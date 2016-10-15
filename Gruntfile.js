@@ -1,15 +1,20 @@
 module.exports = function(grunt) {
     grunt.initConfig({
         pkg: '<json:package.json>',
+        framework: {
+            frameworkLib: 'src/framework',
+            sourceDir: 'src',
+            libraries: 'lib'
+        },
         ts: {
             default: {
                 src: [
-                    'lib/**/*.d.ts',
-                    'src/interfaces.ts',
-                    'src/state.ts',
-                    'src/router.ts',
-                    'src/app.ts',
-                    'src/script.ts'
+                    '<%= framework.libraries %>/**/*.d.ts',
+                    '<%= framework.frameworkLib %>/interfaces.ts',
+                    '<%= framework.frameworkLib %>/state.ts',
+                    '<%= framework.frameworkLib %>/router.ts',
+                    '<%= framework.frameworkLib %>/app.ts',
+                    '<%= framework.sourceDir %>/script.ts'
                 ], dest: 'build/main.js',
                 options: {
                     module: 'amd',
