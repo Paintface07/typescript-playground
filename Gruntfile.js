@@ -6,8 +6,9 @@ module.exports = function(grunt) {
                 src: [
                     'lib/**/*.d.ts',
                     'src/interfaces.ts',
-                    'src/app.ts',
+                    'src/state.ts',
                     'src/router.ts',
+                    'src/app.ts',
                     'src/script.ts'
                 ], dest: 'build/main.js',
                 options: {
