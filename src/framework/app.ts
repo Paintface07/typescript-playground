@@ -5,6 +5,7 @@ module DeadSimpleFramework {
      * The application class--the root of any DeadSimpleFramework application
      */
     export class App {
+        private LOGGER : Logger;
 
         /**
          * The standard application constructor
@@ -12,7 +13,10 @@ module DeadSimpleFramework {
          * @param router - Router - The router the application should leverage for resolving views
          */
         constructor(private logging: boolean = false, public router?: Router) {
-            this.router = new Router(logging);
+            this.LOGGER = new Logger(logging);
+            console.log(this.LOGGER);
+            this.router = new Router(this.LOGGER);
+            this.LOGGER.log('Constructed App!');
         }
 
         /**

@@ -11,13 +11,10 @@ module DeadSimpleFramework.Routing {
          * @param template - string - the URL of the template to resolve
          * @param logging - boolean - a flag indicating whether low-level logging should take place
          */
-        constructor(public name: string, public template: string, private logging: boolean = false) {
-            if (this.logging) {
-                this.logging = true;
-                console.log('Creating state ' + name);
-            }
+        constructor(public name: string, public template?: string, public templateUrl?: string) {
             this.name = name;
             this.template = template;
+            this.templateUrl = templateUrl;
         }
     }
 }

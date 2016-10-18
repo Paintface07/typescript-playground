@@ -4,12 +4,14 @@ module DeadSimpleFramework.Routing {
      * A router for a DeadSimpleFramework application.
      */
     export class Router {
+        private viewResolver: ViewResolver = new ViewResolver();
         private states: Array<State> = new Array<State>();
-        constructor(private logging: boolean = false) {
-            if (this.logging) {
-                this.logging = true;
-                console.log('Router constructed');
-            }
+        constructor(private LOGGER: Logger = new Logger(false), private $default?: State) {
+            LOGGER.log('Router constructed');
+            const defaultState = new State('', null, '/index.html');
+            this.$default = $default ? $default : defaultState;
+            this.state(defaultState);
+            this.viewResolver = new ViewResolver(LOGGER);
         }
 
         /**
@@ -17,9 +19,7 @@ module DeadSimpleFramework.Routing {
          * @param state - string - the name of the state to navigate to
          */
         go(state: string) {
-            if(this.logging === true) {
-                console.log('Navigating to ' + state);
-            }
+            this.LOGGER.log('Navigating to ' + state);
         }
 
         /**
@@ -27,10 +27,12 @@ module DeadSimpleFramework.Routing {
          * @param state - State - the state to create within the router
          */
         state(state: State) {
-            if(this.logging) {
-                console.log('Adding state ' + state.name);
-            }
+            this.LOGGER.log('Adding state [' + state.name + ']');
             this.states.push(state);
+        }
+
+        otherwise($default: State) {
+            this.go($default.name);
         }
     }
 }

@@ -10,8 +10,10 @@ module.exports = function(grunt) {
             default: {
                 src: [
                     '<%= framework.libraries %>/**/*.d.ts',
+                    '<%= framework.frameworkLib %>/logger.ts',
                     '<%= framework.frameworkLib %>/interfaces.ts',
                     '<%= framework.frameworkLib %>/state.ts',
+                    '<%= framework.frameworkLib %>/view.resolver.ts',
                     '<%= framework.frameworkLib %>/router.ts',
                     '<%= framework.frameworkLib %>/app.ts',
                     '<%= framework.sourceDir %>/script.ts'
