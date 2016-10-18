@@ -14,7 +14,6 @@ module DeadSimpleFramework {
          */
         constructor(private logging: boolean = false, public router?: Router) {
             this.LOGGER = new Logger(logging);
-            console.log(this.LOGGER);
             this.router = new Router(this.LOGGER);
             this.LOGGER.log('Constructed App!');
         }
